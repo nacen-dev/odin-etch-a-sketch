@@ -6,6 +6,18 @@ const createDiv = () => {
   return newDiv;
 };
 
+const randomNumBetween = (min, max) => {
+  return Math.floor(Math.random() * (max-min + 1) + min);
+}
+
+const generateRandomRGB = () => {
+  const red = randomNumBetween(0, 100);
+  const green = randomNumBetween(0, 100);
+  const blue = randomNumBetween(0, 100);
+  return `rgb(${red}%, ${green}%, ${blue}%)`
+}
+
+
 const generateSketchpad = (numOfSquares) => {
   let squareGridSize = numOfSquares * numOfSquares;
   if (numOfSquares > 100) {
@@ -21,7 +33,7 @@ generateSketchpad(20);
 const sketchpadBoxes = document.querySelectorAll(".sketchpad-box");
 
 sketchpadBoxes.forEach(box => {
-  box.addEventListener("click", (event) => {
+  box.addEventListener("mouseenter", (event) => {
     event.currentTarget.style.backgroundColor = "rgb(100%, 80%, 100%)";
   })
 });
