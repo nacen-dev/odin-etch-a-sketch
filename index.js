@@ -2,6 +2,7 @@ const sketchpad = document.querySelector(".sketchpad");
 
 const createDiv = () => {
   const newDiv = document.createElement("div");
+  newDiv.className = "sketchpad-box"
   return newDiv;
 };
 
@@ -16,3 +17,12 @@ const generateSketchpad = (numOfSquares) => {
 }
 
 generateSketchpad(20);
+
+const sketchpadBoxes = document.querySelectorAll(".sketchpad-box");
+
+sketchpadBoxes.forEach(box => {
+  box.addEventListener("click", (event) => {
+    event.currentTarget.style.backgroundColor = "rgb(100%, 80%, 100%)";
+  })
+});
+
