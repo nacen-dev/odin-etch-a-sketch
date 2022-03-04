@@ -1,14 +1,16 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 body {
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 1rem;
 }
 
 .header {
@@ -19,4 +21,22 @@ body {
 
 .header-title {
   font-size: 3rem;
+}
+
+.sketch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sketchpad {
+  width: 960px;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+}
+
+.sketchpad div {
+  border: 1px solid black;
+  height: 25px;
 }
