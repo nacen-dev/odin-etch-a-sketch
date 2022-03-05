@@ -32,11 +32,9 @@ body {
 .sketchpad {
   width: 960px;
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
 }
 
 .sketchpad div {
   border: 1px solid black;
-  height: 25px;
+  padding: 10px;
 }
