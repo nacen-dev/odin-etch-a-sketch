@@ -31,12 +31,15 @@ body {
 
 .sketchpad {
   width: 960px;
+  height: 960px;
   display: grid;
+  border: 2px solid black;
+  max-width: 960px;
+  max-height: 960px;
 }
 
 .sketchpad div {
   border: 1px solid black;
-  padding: 10px;
 }
 
 .clear-grid-container {
@@ -46,8 +49,14 @@ body {
   margin-bottom: 1rem;
 }
 
+.clear-grid {
+  background-color: #c60f13;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
 .button {
-  padding: 10px 15px;
+  padding: 10px 20px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
