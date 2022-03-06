@@ -21,7 +21,6 @@ const generateSketchpadBoxes = (numOfSquares) => {
   for (let i = 0; i < numOfSquares * numOfSquares; i++) {
     sketchpad.appendChild(createDiv());
   }
-  console.log(numOfSquares*numOfSquares);
 };
 
 const decimalFormat = (num = 0, numOfDecimal = 2) => {
