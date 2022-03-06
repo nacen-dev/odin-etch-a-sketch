@@ -52,11 +52,11 @@ body {
 .clear-grid {
   background-color: #c60f13;
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .button {
-  padding: 10px 20px;
+  padding: 10px  30px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
