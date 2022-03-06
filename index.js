@@ -1,5 +1,3 @@
-const sketchpad = document.querySelector(".sketchpad");
-
 const createDiv = () => {
   const newDiv = document.createElement("div");
   newDiv.className = "sketchpad-box";
@@ -17,17 +15,14 @@ const generateRandomRGB = () => {
   return `rgb(${red}%, ${green}%, ${blue}%)`;
 };
 
-const generateSketchpad = (numOfSquares) => {
-  let squareGridSize = numOfSquares > 100 ? 100 : numOfSquares;
-
-  sketchpad.style.gridTemplateRows = `repeat(${squareGridSize}, 1fr)`;
-  sketchpad.style.gridTemplateColumns = `repeat(${squareGridSize}, 1fr)`;
-  for (let i = 0; i < squareGridSize * squareGridSize; i++) {
+const generateSketchpadBoxes = (numOfSquares) => {
+  sketchpad.style.gridTemplateRows = `repeat(${numOfSquares}, 1fr)`;
+  sketchpad.style.gridTemplateColumns = `repeat(${numOfSquares}, 1fr)`;
+  for (let i = 0; i < numOfSquares * numOfSquares; i++) {
     sketchpad.appendChild(createDiv());
   }
+  console.log(numOfSquares*numOfSquares);
 };
-
-generateSketchpad(16);
 
 const decimalFormat = (num = 0, numOfDecimal = 2) => {
   let format =
@@ -83,12 +78,43 @@ const changeColor = () => {
   return changeRGB;
 };
 
-const sketchpadBoxes = document.querySelectorAll(".sketchpad-box");
+const addChangeColorEvent = (sketchpadBoxes) => {
+  sketchpadBoxes.forEach((box) => {
+    const changeRGB = changeColor();
 
-sketchpadBoxes.forEach((box) => {
-  const changeRGB = changeColor();
-
-  box.addEventListener("click", (event) => {
-    event.currentTarget.style.backgroundColor = changeRGB();
+    box.addEventListener("mouseover", (event) => {
+      event.currentTarget.style.backgroundColor = changeRGB();
+    });
   });
-});
+};
+
+const clearGrid = () => {
+  const sketchpadBoxes = document.querySelectorAll(".sketchpad-box");
+  sketchpadBoxes.forEach((box) => {
+    box.remove();
+  });
+
+  let userInput = 0;
+  const userLimitInput = 100;
+
+  do {
+    userInput = Number(
+      prompt("Enter the number of squares per side for the new grid: 1-100")
+    );
+  } while (userInput > userLimitInput || userInput <= 0);
+
+  generateSketchpadBoxes(userInput);
+  const boxes = document.querySelectorAll(".sketchpad-box");
+  addChangeColorEvent(boxes);
+};
+
+const defaultSquareSize = 16;
+const clearGridButton = document.querySelector(".clear-grid");
+const sketchpad = document.querySelector(".sketchpad");
+
+generateSketchpadBoxes(defaultSquareSize);
+
+const sketchpadBoxes = document.querySelectorAll(".sketchpad-box");
+addChangeColorEvent(sketchpadBoxes);
+
+clearGridButton.addEventListener("click", clearGrid);
